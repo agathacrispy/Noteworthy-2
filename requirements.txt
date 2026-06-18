@@ -1,3 +1,6 @@
 faster-whisper
 demucs
 pydub
+torchaudio
+torch
+soundfile
