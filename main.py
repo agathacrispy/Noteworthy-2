@@ -38,7 +38,9 @@ def main():
         return
 
     if path.suffix.lower() == ".mp3":
-        mp3_to_wav(path)
+        path = mp3_to_wav(path)
+        
+    
         
 
 if __name__ == "__main__":
