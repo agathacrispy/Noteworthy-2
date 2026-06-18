@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 
-from preprocessing.convert import mp3_to_wav
+from preprocessing.separate import separate_two_stems
 
 
 def parse_args():
@@ -11,7 +11,7 @@ def parse_args():
 
     parser.add_argument(
         "input",
-        help="Path to the input .wav or .mp3 file"
+        help="Path to the input .mp3 file"
     )
 
     parser.add_argument(
@@ -33,15 +33,15 @@ def main():
         print(f"file not found: {path}")
         return
 
-    if path.suffix.lower() not in (".wav", ".mp3"):
-        print(f"unsupported file type '{path.suffix}'. Must be .wav or .mp3.")
+    if path.suffix.lower() not in (".mp3"):
+        print(f"unsupported file type '{path.suffix}'. must be .mp3.")
         return
 
-    if path.suffix.lower() == ".mp3":
-        path = mp3_to_wav(path)
-        
-    
-        
+    output_dir = Path("output") / path.stem
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    vocals_path, backing_path = separate_two_stems(path, output_dir)
+
 
 if __name__ == "__main__":
     main()
