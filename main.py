@@ -2,6 +2,7 @@ import argparse
 from pathlib import Path
 
 from preprocessing.separate import separate_two_stems
+from preprocessing.transcribe import transcribe
 
 
 def parse_args():
@@ -41,6 +42,7 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     vocals_path, backing_path = separate_two_stems(path, output_dir)
+    transcribe(path)
 
 
 if __name__ == "__main__":
