@@ -1,0 +1,7 @@
+faster-whisper
+whisperx
+demucs
+pydub
+torchaudio
+torch
+soundfile
